@@ -1,7 +1,7 @@
 import './util.js';
 import './makeComment.js';
 import './makeDescription.js';
-import './renderMiniature.js';
+import {createMinis} from './renderMiniature.js';
+import './showModal.js';
 
-// eslint-disable-next-line
-console.log(makeObject());
+createMinis();

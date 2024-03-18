@@ -1,7 +1,3 @@
-import './util.js';
-import './makeComment.js';
 import './makeDescription.js';
-import {createMinis} from './renderMiniature.js';
-import './showModal.js';
-
-createMinis();
+import './thimbnails.js';
+import './modal.js';

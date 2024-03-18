@@ -1,5 +1,3 @@
-export {getRandomInteger, createRandomIdFromRangeGenerator};
-
 //Функция для определения максимального и минимального значения из диапазона
 function getRandomInteger (min, max) {
   const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
@@ -27,3 +25,24 @@ function createRandomIdFromRangeGenerator (min, max) {
     return currentValue;
   };
 }
+
+const getRandomObject = (arr) => arr[getRandomInteger(0, arr.length - 1)];
+
+//@ функция, создающая генераторы
+const createIdGenerator = () => {
+  let lastGeneratedId = 0;
+
+  return function () {
+    lastGeneratedId++;
+
+    return lastGeneratedId;
+  };
+};
+
+//@ функция-генератор идентификаторов
+const generateId = createIdGenerator();
+
+//@ функция, проверяющая, что нажатая клавиша - ESC
+const isEscKey = (evt) => evt.key === 'Escape';
+
+export {getRandomInteger, createRandomIdFromRangeGenerator, getRandomObject, generateId, isEscKey};

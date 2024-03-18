@@ -1,18 +1,23 @@
 import {getRandomInteger, createRandomIdFromRangeGenerator} from './util';
 import {makeComment} from './makeDescription';
-export {makeObject};
+
+//рандомная подпись фотографий
+const photoDescription = ['круто', 'класс', 'восхитительно', 'превосходно', 'шикарно', 'упомрачительно'];
+const getRandomPhotoDescription = () => photoDescription[getRandomInteger(0, photoDescription.length - 1)];
+const getCommentsList = () => Array.from({length: getRandomInteger(0, 30)}, makeComment);
+
+const objectId = createRandomIdFromRangeGenerator(1, 25);
+const urlId = createRandomIdFromRangeGenerator(1, 25);
 
 //Функция по выбору рандомного идентификационного номера объекта и фотографии по url
-function makeObject() {
-  const objectIdentifier = createRandomIdFromRangeGenerator(1, 25);
-  const urlIdentifier = createRandomIdFromRangeGenerator(1, 25);
+const makeObject = () => ({
+  id: objectId(),
+  url: `photos/${urlId()}.jpg`,
+  description: getRandomPhotoDescription(),
+  likes: getRandomInteger(15, 200),
+  comments: getCommentsList()
+});
 
-  //Возвращение, как итог технического задания
-  return {
-    id: objectIdentifier(),
-    url: `photos/${urlIdentifier()}.jpg`,
-    description: 'Восхитетельный вид на море во время желанного отпуска',
-    likes: getRandomInteger(15, 200),
-    comments: makeComment()
-  };
-}
+const createPhotosList = () => Array.from({length: 25}, makeObject);
+
+export {createPhotosList};

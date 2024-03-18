@@ -2,43 +2,43 @@ import { isEscKey } from './util.js';
 import { fillModal, showComments, matchShownCommentsNumber } from './showModal.js';
 
 
-const picturesContainerNode = document.querySelector('.pictures');
+const imageContainer = document.querySelector('.pictures');
 const modalNode = document.querySelector('.big-picture');
 const closeBtnNode = modalNode.querySelector('.big-picture__cancel');
-const showMoreCommentsBtn = modalNode.querySelector('.social__comments-loader');
+const additionalСommentsBtn = modalNode.querySelector('.social__comments-loader');
 
 
-//# обработчик открывает модальное окно при клике на контейнер с картинками
-const onPicturesContainerNodeClick = (evt) => {
+//обработчик открывает модальное окно при клике на контейнер с картинками
+const onimageContainerClick = (evt) => {
   const clickedPicture = evt.target.closest('.picture');
 
-  fillModal(clickedPicture, modalNode, showMoreCommentsBtn); //? заполнение модалки внутри обработчика норм?
+  fillModal(clickedPicture, modalNode, additionalСommentsBtn); //? заполнение модалки внутри обработчика норм?
 
   openModal();
 };
 
-picturesContainerNode.addEventListener('click', onPicturesContainerNodeClick);
+imageContainer.addEventListener('click', onimageContainerClick);
 
 
-//# обработчик закрывает модальное окно при клике на крестик
+//обработчик закрывает модальное окно при клике на крестик
 const onCloseBtnNodeClick = () => {
   closeModal();
 };
 
-//# обработчик закрывает модальное окно при нажатии на ESC
+//обработчик закрывает модальное окно при нажатии на ESC
 const onEscKeydown = (evt) => {
   if (isEscKey(evt)) {
     closeModal();
   }
 };
 
-//# обработчик нажатия на кнопку показа больше комментариев
-const onShowMoreCommentsBtnClick = function () {
+//обработчик нажатия на кнопку показа больше комментариев
+const onAdditionalСommentsBtnClick = function () {
   showComments();
   matchShownCommentsNumber(this);
 };
 
-//@ функция, открывающая модальное окно
+//функция, открывающая модальное окно
 const openModal = () => {
   modalNode.classList.remove('hidden');
 
@@ -47,10 +47,10 @@ const openModal = () => {
 
   document.body.classList.add('modal-open');
 
-  showMoreCommentsBtn.addEventListener('click', onShowMoreCommentsBtnClick);
+  additionalСommentsBtn.addEventListener('click', onAdditionalСommentsBtnClick);
 };
 
-//@ функция, закрывающая модальное окно
+//функция, закрывающая модальное окно
 const closeModal = () => {
   modalNode.classList.add('hidden');
 
@@ -59,5 +59,5 @@ const closeModal = () => {
 
   document.body.classList.remove('modal-open');
 
-  showMoreCommentsBtn.removeEventListener('click', onShowMoreCommentsBtnClick);
+  additionalСommentsBtn.removeEventListener('click', onAdditionalСommentsBtnClick);
 };

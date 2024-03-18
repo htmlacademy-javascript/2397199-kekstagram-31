@@ -1,16 +1,14 @@
 import {picturesArray} from './makeDescription.js';
 
-//# шаблон миниатюры
+//шаблон миниатюры
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
-//# список-сетка миниатюр
+//отображение миниатюр (сеткой)
 const picturesListNode = document.querySelector('.pictures');
 
-//# фрагмент
-//! а для чего он нужен кстати?
 const picturesListFragment = document.createDocumentFragment();
 
-//# присвоение данных в шаблон миниатюр
+//данные для заполнения миниатюры
 picturesArray.forEach(
   ({ id, url, description, likes, comments }) => {
     const pictureNode = pictureTemplate.cloneNode(true);
@@ -19,7 +17,6 @@ picturesArray.forEach(
     pictureNode.querySelector('.picture__likes').textContent = likes;
     pictureNode.querySelector('.picture__comments').textContent = comments.length;
 
-    //# присвеоние миниатюре идентификатора, соответсвующего идентификатора
     pictureNode.setAttribute('id', id);
 
     picturesListFragment.append(pictureNode);

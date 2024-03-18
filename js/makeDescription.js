@@ -1,7 +1,7 @@
 import {getRandomInteger, getRandomObject, generateId} from './util.js';
 
-//# список комментариев
-const COMMENTS_EXAMPLES = [
+//комментарии
+const COMMENTS = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -11,37 +11,37 @@ const COMMENTS_EXAMPLES = [
 ];
 
 
-//# список имён
+//никнеймы комментаторов
 const NAMES = [
-  'Дарья',
-  'Александр',
-  'Дмитрий',
-  'Виктория',
-  'Максим',
-  'Тимофей',
-  'Кирилл',
-  'Варвара',
-  'Мария',
-  'Алина',
+  'Сюзанна',
+  'Герхард',
+  'Омар',
+  'Анна',
+  'Владимир',
+  'Сёмен',
+  'Василий',
+  'Андрей',
+  'Матвей',
+  'Анастастия',
+  'Зоя',
+  'Клавдия',
+  'Нина',
+  'Зинаида',
 ];
 
-//# небоходимое количество объектов
-const PICTURES_NUMBER = 25;
+//Число картинок
+const NUMBER_PICTURES = 25;
 
-function createCommment() {
-  return {
-    id: getRandomInteger(1, 1000),
-    avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
-    message: getRandomObject(COMMENTS_EXAMPLES),
-    name: getRandomObject(NAMES)
-  };
-}
+const createCommment = () => ({
+  id: getRandomInteger(1, 1000),
+  avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
+  message: getRandomObject(COMMENTS),
+  name: getRandomObject(NAMES)
+});
 
-//@ функция, создающая объект
+//функция по созданию отдельного объекта с его содержимым
 const createPicture = () => {
-
   const generatedId = generateId();
-
   return {
     id: generatedId,
     url: `photos/${generatedId}.jpg`,
@@ -51,7 +51,5 @@ const createPicture = () => {
   };
 };
 
-//# создание результирующего массива
-const picturesArray = Array.from({ length: PICTURES_NUMBER }, createPicture);
-
+const picturesArray = Array.from({ length: NUMBER_PICTURES}, createPicture);
 export {picturesArray};

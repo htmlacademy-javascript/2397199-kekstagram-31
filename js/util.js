@@ -7,6 +7,21 @@ function getRandomInteger (min, max) {
   return Math.floor(result);
 }
 
+//функция, создающая генераторы
+const createIdGenerator = () => {
+  let lastGeneratedId = 0;
+
+  return function () {
+    lastGeneratedId++;
+
+    return lastGeneratedId;
+  };
+};
+
+//функция-генератор идентификаторов
+const generateId = createIdGenerator();
+
+const getRandomObject = (arr) => arr[getRandomInteger(0, arr.length - 1)];
 //Функция для выбора рандомного числа
 function createRandomIdFromRangeGenerator (min, max) {
   const previousValues = [];
@@ -26,23 +41,7 @@ function createRandomIdFromRangeGenerator (min, max) {
   };
 }
 
-const getRandomObject = (arr) => arr[getRandomInteger(0, arr.length - 1)];
-
-//@ функция, создающая генераторы
-const createIdGenerator = () => {
-  let lastGeneratedId = 0;
-
-  return function () {
-    lastGeneratedId++;
-
-    return lastGeneratedId;
-  };
-};
-
-//@ функция-генератор идентификаторов
-const generateId = createIdGenerator();
-
-//@ функция, проверяющая, что нажатая клавиша - ESC
+//функция, проверяющая, что нажатая клавиша - ESC
 const isEscKey = (evt) => evt.key === 'Escape';
 
 export {getRandomInteger, createRandomIdFromRangeGenerator, getRandomObject, generateId, isEscKey};

@@ -1,6 +1,5 @@
 import { isEscKey } from './util.js';
-import { fillModal, showComments, matchShownCommentsNumber } from './showModal.js';
-
+import { fillModal, showComments, passTheNumberOfComments} from './showModal.js';
 
 const imageContainer = document.querySelector('.pictures');
 const modalNode = document.querySelector('.big-picture');
@@ -9,7 +8,7 @@ const additionalСommentsBtn = modalNode.querySelector('.social__comments-loader
 
 
 //обработчик открывает модальное окно при клике на контейнер с картинками
-const onimageContainerClick = (evt) => {
+const onImageContainerClick = (evt) => {
   const clickedPicture = evt.target.closest('.picture');
 
   fillModal(clickedPicture, modalNode, additionalСommentsBtn); //? заполнение модалки внутри обработчика норм?
@@ -17,7 +16,7 @@ const onimageContainerClick = (evt) => {
   openModal();
 };
 
-imageContainer.addEventListener('click', onimageContainerClick);
+imageContainer.addEventListener('click', onImageContainerClick);
 
 
 //обработчик закрывает модальное окно при клике на крестик
@@ -35,7 +34,7 @@ const onEscKeydown = (evt) => {
 //обработчик нажатия на кнопку показа больше комментариев
 const onAdditionalСommentsBtnClick = function () {
   showComments();
-  matchShownCommentsNumber(this);
+  passTheNumberOfComments(this);
 };
 
 //функция, открывающая модальное окно

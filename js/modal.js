@@ -3,15 +3,15 @@ import { fillModal, showComments, passTheNumberOfComments} from './showModal.js'
 
 const imageContainer = document.querySelector('.pictures');
 const modalNode = document.querySelector('.big-picture');
-const closeBtnNode = modalNode.querySelector('.big-picture__cancel');
-const additionalСommentsBtn = modalNode.querySelector('.social__comments-loader');
+const closeButtonNode = modalNode.querySelector('.big-picture__cancel');
+const additionalСommentsButton = modalNode.querySelector('.social__comments-loader');
 
 
 //обработчик открывает модальное окно при клике на контейнер с картинками
 const onImageContainerClick = (evt) => {
   const clickedPicture = evt.target.closest('.picture');
 
-  fillModal(clickedPicture, modalNode, additionalСommentsBtn); //? заполнение модалки внутри обработчика норм?
+  fillModal(clickedPicture, modalNode, additionalСommentsButton);
 
   openModal();
 };
@@ -20,7 +20,7 @@ imageContainer.addEventListener('click', onImageContainerClick);
 
 
 //обработчик закрывает модальное окно при клике на крестик
-const onCloseBtnNodeClick = () => {
+const onCloseButtonNodeClick = () => {
   closeModal();
 };
 
@@ -32,31 +32,32 @@ const onEscKeydown = (evt) => {
 };
 
 //обработчик нажатия на кнопку показа больше комментариев
-const onAdditionalСommentsBtnClick = function () {
+const onAdditionalСommentsButtonClick = function () {
   showComments();
   passTheNumberOfComments(this);
 };
+onAdditionalСommentsButtonClick();
 
 //функция, открывающая модальное окно
 const openModal = () => {
   modalNode.classList.remove('hidden');
 
-  closeBtnNode.addEventListener('click', onCloseBtnNodeClick);
+  closeButtonNode.addEventListener('click', onCloseButtonNodeClick);
   document.addEventListener('keydown', onEscKeydown);
 
   document.body.classList.add('modal-open');
 
-  additionalСommentsBtn.addEventListener('click', onAdditionalСommentsBtnClick);
+  additionalСommentsButton.addEventListener('click', onAdditionalСommentsButtonClick);
 };
 
 //функция, закрывающая модальное окно
 const closeModal = () => {
   modalNode.classList.add('hidden');
 
-  closeBtnNode.removeEventListener('click', onCloseBtnNodeClick);
+  closeButtonNode.removeEventListener('click', onCloseButtonNodeClick);
   document.removeEventListener('keydown', onEscKeydown);
 
   document.body.classList.remove('modal-open');
 
-  additionalСommentsBtn.removeEventListener('click', onAdditionalСommentsBtnClick);
+  additionalСommentsButton.removeEventListener('click', onAdditionalСommentsButtonClick);
 };

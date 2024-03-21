@@ -8,13 +8,13 @@ const additionalСommentsButton = modalNode.querySelector('.social__comments-loa
 
 
 //обработчик открывает модальное окно при клике на контейнер с картинками
-const onImageContainerClick = (evt) => {
+function onImageContainerClick(evt) {
   const clickedPicture = evt.target.closest('.picture');
 
   fillModal(clickedPicture, modalNode, additionalСommentsButton);
 
   openModal();
-};
+}
 
 imageContainer.addEventListener('click', onImageContainerClick);
 

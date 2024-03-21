@@ -39,7 +39,7 @@ const onAdditionalСommentsButtonClick = function () {
 onAdditionalСommentsButtonClick();
 
 //функция, открывающая модальное окно
-const openModal = () => {
+function openModal() {
   modalNode.classList.remove('hidden');
 
   closeButtonNode.addEventListener('click', onCloseButtonNodeClick);
@@ -48,10 +48,10 @@ const openModal = () => {
   document.body.classList.add('modal-open');
 
   additionalСommentsButton.addEventListener('click', onAdditionalСommentsButtonClick);
-};
+}
 
 //функция, закрывающая модальное окно
-const closeModal = () => {
+function closeModal() {
   modalNode.classList.add('hidden');
 
   closeButtonNode.removeEventListener('click', onCloseButtonNodeClick);
@@ -60,4 +60,4 @@ const closeModal = () => {
   document.body.classList.remove('modal-open');
 
   additionalСommentsButton.removeEventListener('click', onAdditionalСommentsButtonClick);
-};
+}
